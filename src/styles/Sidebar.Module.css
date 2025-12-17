@@ -57,27 +57,8 @@
 }
 /* ---scrollbar---- */
 .sidebar::-webkit-scrollbar {
-  /* width: 0.6rem;
-  border-radius: 1rem; */
   display:none
 }
-
-/* .sidebar::-webkit-scrollbar-track {
-    background-color: var(--white-color);
-   
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background-color: var(--notes-color-1);
-    border-radius: 1rem;
-
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background-color: var(--notes-color-2);
-} */
-
-/* media queries */
 
 @media screen and (max-width: 768px) {
   .sidebar {
