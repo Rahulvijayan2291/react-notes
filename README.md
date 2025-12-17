@@ -1,6 +1,6 @@
 # Pocket Notes - Your Note-Taking Companion
 
-![Screenshot (351)](https://github.com/AnkitaMalik22/react-notes/assets/80139836/c6a74111-a871-4aa4-b100-4dd50ecc9499)
+<img width="1918" height="908" alt="image" src="https://github.com/user-attachments/assets/1267c1fd-1d58-40b5-9261-1e1026176a98" />
 
 Pocket Notes is a simple and intuitive note-taking application built using React. 
 It empowers users to create, organize, and customize their notes effortlessly. 
