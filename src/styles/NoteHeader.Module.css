@@ -1,27 +1,29 @@
 .note-header {
-  padding: 0.6rem;
-  background-color: var(--home-back-color);
+  padding: 1rem 1.5rem;
+  background-color: var(--primary-blue);
+  color: white;
   width: 70%;
   position: fixed;
   top: 0;
   right: 0;
-}
-.header-note-title {
-  font-weight: 500;
-  font-size: 1.3rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
 }
 
 .header-note-icon {
-  background-color: var(--notes-color-1);
-  color: var(--white-color);
   width: 3rem;
   height: 3rem;
-  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 1rem;
+  color: white;
 }
 
-/* media queries */
+.header-note-title {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
 @media screen and (max-width: 768px) {
-  .note-header {
-    width: 100%;
-  }
+  .note-header { width: 100%; }
 }

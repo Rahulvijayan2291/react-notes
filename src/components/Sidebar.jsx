@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/Sidebar.Module.css";
 
 const Sidebar = ({
@@ -10,67 +9,55 @@ const Sidebar = ({
   display,
   setDisplay,
 }) => {
-
-
   const handleSelect = (note) => {
     if (isMobile) {
       setDisplay(true);
     }
     setSelectedNote(note);
-    // console.log(note)
   };
 
   return (
     <div
-      className={` sidebar ${isMobile ? "mob-sidebar" : ""}`}
+      className={`sidebar ${isMobile ? "mob-sidebar" : ""}`}
       style={{ display: isMobile && display ? "none" : "" }}
     >
-      <div className="sidebar-heading ">
+      <div className="sidebar-heading">
         <p className="sidebar-title">Pocket Notes</p>
-        <button
-          className="create-notes flex flex-row"
-          onClick={() => setNoteBtnClick(true)}
-        >
-          <svg
-            style={{ marginRight: "0.5rem" }}
-            width="12"
-            height="22"
-            viewBox="0 0 21 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M20.1522 8.13587V12.4498H0.312071V8.13587H20.1522ZM12.5581 0.0248901V21.0975H7.92606V0.0248901H12.5581Z"
-              fill="white"
-            />
-          </svg>
-          Create Notes Group
-        </button>
       </div>
+
       <div className="sidebar-notes-list flex justify-start">
         {noteGroups &&
           noteGroups.map((note, index) => {
-            const notes = note.name.split(" ");
-            const firstLetters = notes.map((word) => word.charAt(0));
+            const names = note.name.split(" ");
+            const firstLetters = names.map((word) => word.charAt(0)).join("");
             return (
               <div
-                className={`sidebar-note-element flex flex-row  justify-start ${
-                  note.id === selectedNote.id ? "note-selected" : ""
+                className={`sidebar-note-element flex flex-row justify-start ${
+                  note.id === selectedNote?.id ? "note-selected" : ""
                 }`}
                 key={index}
                 onClick={() => handleSelect(note)}
               >
                 <div
                   className="circle note-list-icon flex"
-                  style={{ marginRight: "0.5rem", backgroundColor: note.color }}
+                  style={{ backgroundColor: note.color }}
                 >
-                  {firstLetters[0]}
-                  {firstLetters[firstLetters.length - 1]}
+                  {firstLetters.substring(0, 2).toUpperCase()}
                 </div>
                 <p className="sidebar-note-title">{note.name}</p>
               </div>
             );
           })}
+      </div>
+
+      {/* FIXED CREATE BUTTON AREA */}
+      <div className="add-btn-container">
+        <button 
+          className="add-btn-circle flex" 
+          onClick={() => setNoteBtnClick(true)}
+        >
+          +
+        </button>
       </div>
     </div>
   );

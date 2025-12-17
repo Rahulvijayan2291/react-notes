@@ -6,39 +6,29 @@
 }
 
 :root {
+  /* Figma Primary Colors */
+  --primary-blue: #001f8b;        /* Dark blue for headers and buttons */
+  --sidebar-bg: #ffffff;          /* Pure white sidebar */
+  --home-content-bg: #dae5ff;     /* Light blue tint for Home page */
+  --selection-highlight: #2f2f2f2b; /* Grey selection for sidebar list */
+  
+  /* Sidebar Group Circle Colors */
   --notes-color-1: #b38bfa;
   --notes-color-2: #ff79f2;
   --notes-color-3: #43e6fc;
   --notes-color-4: #f19576;
   --notes-color-5: #0047ff;
   --notes-color-6: #6691ff;
-
-  --input-color: #9a9a9a;
-  --black-color: #000000;
-  --white-color: #ffffff;
-  --home-back-color: #e8e8e8;
-  --notes-back-color: #65b5cf;
-  --border-color: #cccccc;
-  --send-btn-color: #ababab;
-}
-/* Utility Classes */
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.justify-start {
-  justify-content: flex-start !important;
-}
-.flex-row {
-  flex-direction: row !important;
-}
-.circle {
-  border-radius: 50%;
 }
 
 body {
-  background-color: var(--notes-back-color);
+  background-color: var(--sidebar-bg); /* */
   overflow: hidden;
+}
+
+.circle {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

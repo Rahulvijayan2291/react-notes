@@ -1,63 +1,34 @@
 import React from "react";
 import "../styles/NoteView.Module.css";
-
-import NoteHeader from "./NoteHeader";
 import Input from "./Input";
+import NoteHeader from "./NoteHeader";
 
 const NoteView = ({ name, color, id, isMobile, display, setDisplay }) => {
   const [notes, setNotes] = React.useState([]);
-  const [groupId, setGroupId] = React.useState("");
-  const [newNote, setNewNote] = React.useState({});
 
   React.useEffect(() => {
-    const noteGroups = JSON.parse(localStorage.getItem("noteGroups"));
-    const groupIndex = noteGroups.findIndex((group) => group.id === id);
-    if (groupIndex === -1) {
-      console.error(`Group with ID ${id} not found`);
-      return;
-    }
-    const group = noteGroups[groupIndex];
-    setGroupId(group.id);
-    setNotes([...group.notes], newNote);
-    console.log(group.notes);
-  }, [id, newNote, setNewNote]);
+    const noteGroups = JSON.parse(localStorage.getItem("noteGroups")) || [];
+    const group = noteGroups.find((g) => g.id === id);
+    if (group) setNotes(group.notes);
+  }, [id]);
 
   const handleNewNote = (value) => {
-    console.log("new note");
-    setNewNote(value);
-    setNotes([...notes], newNote);
+    setNotes((prev) => [...prev, value]);
   };
 
   return (
-    <div
-      className="note-view-container flex  justify-start"
-      style={{ display: isMobile && !display ? "none" : "" }}
-    >
-      <NoteHeader
-        name={name}
-        color={color}
-        isMobile={isMobile}
-        display={display}
-        setDisplay={setDisplay}
-      />
-      {groupId === id &&
-        notes &&
-        notes.map((note, index) => {
-          return (
-            <div className="note-view flex flex-row justify-start " key={index}>
-              <div className="time-contatiner">
-                <p className="date">
-                  {note &&
-                    note.time.substring(0, 4) + note.time.substring(7, 11)}
-                </p>
-                <p className="time">{note && note.date}</p>
-              </div>
-              <div className="note">{note.content}</div>
+    <div className="note-view-container" style={{ display: isMobile && !display ? "none" : "flex" }}>
+      <NoteHeader name={name} color={color} isMobile={isMobile} setDisplay={setDisplay} />
+      <div className="notes-display-area">
+        {notes.map((note, index) => (
+          <div className="note-card" key={index}>
+            <p className="note-text">{note.content}</p>
+            <div className="note-timestamp">
+              {note.date} <span className="dot">•</span> {note.time}
             </div>
-          );
-        })}
-        {notes && notes.length<=0 ? <p className="example-txt">Start Writing Notes Here!</p> : ""}
-
+          </div>
+        ))}
+      </div>
       <Input id={id} handleNewNote={handleNewNote} />
     </div>
   );
